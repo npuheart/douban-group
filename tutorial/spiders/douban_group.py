@@ -7,7 +7,7 @@ class QuotesSpider(scrapy.Spider):
 
     def start_requests(self):
         urls = [
-            'https://www.douban.com/group/729203/',
+            'https://www.douban.com/group/icrush/',
         ]
         for url in urls:
             yield scrapy.Request(url=url, callback=self.parse)

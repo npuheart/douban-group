@@ -5,7 +5,7 @@ import random
 class QuotesSpider(scrapy.Spider):
     name = "blogs"
     start_urls = [
-        'https://blog.pengfeima.cn',
+        'https://dusays.com/',
     ]
 
     def parse(self, response):
