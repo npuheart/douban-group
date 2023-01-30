@@ -6,11 +6,12 @@ class QuotesSpider(scrapy.Spider):
     name = "douban-group"
 
     def start_requests(self):
-        urls = [
-            'https://www.douban.com/group/icrush/',
-        ]
-        for url in urls:
-            yield scrapy.Request(url=url, callback=self.parse)
+        groups = ['icrush']
+
+        url_base = 'https://www.douban.com/group/{group:s}/'
+
+        for group in groups:
+            yield scrapy.Request(url=url_base.format(group=group), callback=self.parse, meta={'group': group})
 
     def parse(self, response):
         filename = self.name + str(random.random())[-5:] +'.html'
@@ -22,11 +23,13 @@ class QuotesSpider(scrapy.Spider):
                 tds[1].css('td a::attr(href)').get(),
                 tds[3].css('td::text').get()]
             if '最后回应' not in data:
-                yield response.follow(url=data[1], callback=self.parse_item)
+                yield response.follow(url=data[1], callback=self.parse_item, meta=response.meta)
 
     def parse_item(self, response):
         item = dict()
         item['filename'] = '博文' + str(random.random())[-5:] +'.html'
+        print(response.meta)
+        item['group'] = response.meta['group']
         item['url'] = response.url
         item['title'] = response.css('.article h1').get()
         item['content'] = response.css('#link-report .topic-content').get()
