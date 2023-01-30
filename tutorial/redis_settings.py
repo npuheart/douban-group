@@ -1,7 +1,7 @@
 # 数据库设置
 
 REDIS_PORT = 6379
-DATABASE = 1
+DATABASE = 3
 
 
 
@@ -11,6 +11,7 @@ DATABASE = 1
 # content
 # comments
 redis_douban_group_all_topics     = 'douban:group:all:topics:groupid:{groupid:s}'
+redis_douban_group_all_groups     = 'douban:group:all:groups'
 redis_douban_group_topic_url      = 'douban:group:topicid:{topicid:s}:url'
 redis_douban_group_topic_title    = 'douban:group:topicid:{topicid:s}:title'
 redis_douban_group_topic_time     = 'douban:group:topicid:{topicid:s}:time'

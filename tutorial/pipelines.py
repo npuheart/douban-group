@@ -38,11 +38,12 @@ class RedisWriterPipeline(object):
         topic_author_link = item['author_link']
         topic_created_time = item['create-time']
         topic_created_ip = item['create-ip']
+        r.sadd(redis_douban_group_all_groups, item['group'])
+        r.sadd(redis_douban_group_all_topics.format(groupid=item['group']), topic_id)
         r.set(redis_douban_group_topic_author.format(topicid=topic_id), topic_author)
         r.set(redis_douban_group_topic_author_link.format(topicid=topic_id), topic_author_link)
         r.set(redis_douban_group_topic_created_time.format(topicid=topic_id), topic_created_time)
         r.set(redis_douban_group_topic_created_ip.format(topicid=topic_id), topic_created_ip or '')
-        r.sadd(redis_douban_group_all_topics.format(groupid=item['group']), topic_id)
         r.set(redis_douban_group_topic_url.format(topicid=topic_id), topic_url)
         old_topic_content = r.get(redis_douban_group_topic_content.format(topicid=topic_id))
         # 原本没有内容时，添加内容
