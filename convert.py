@@ -5,7 +5,7 @@ import json
 import redis
 import os
 PATH = 'output'
-REDIS_PORT = 29384
+REDIS_PORT = 6379
 DATABASE = 2
 JSONFILE = 'data.json'
 
@@ -59,5 +59,8 @@ for i in r.smembers(redis_douban_group_all_topics):
     topic['create-ip'] = (topic_created_ip or b'').decode('utf-8')
     data.append(topic)
 
-with open(JSONFILE, 'w') as f:
+
+data = sorted(data, key=lambda s: s['create-time'], reverse=True)
+
+with open(JSONFILE, 'w' ,encoding='utf-8') as f:
     json.dump(data, f, ensure_ascii=False, indent=2)
