@@ -6,7 +6,7 @@ class QuotesSpider(scrapy.Spider):
     name = "douban-group"
 
     def start_requests(self):
-        groups = ['icrush']
+        groups = ['icrush', '711609']
 
         url_base = 'https://www.douban.com/group/{group:s}/'
 
