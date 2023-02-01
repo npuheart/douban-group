@@ -1,6 +1,6 @@
 # 数据库设置
 
-REDIS_PORT = 6379
+REDIS_PORT = 29384
 DATABASE = 3
 
 
