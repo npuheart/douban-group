@@ -22,7 +22,7 @@ jobs:
       run: |
         sudo apt-get install -y redis
         cd data
-        redis-server --port 6379 &
+        redis-server --port 13849 &
 
     - name: Set up Python
       uses: actions/setup-python@v1

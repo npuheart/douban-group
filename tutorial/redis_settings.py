@@ -1,6 +1,6 @@
 # 数据库设置
 REDIS_SERVER = 'redis'
-REDIS_PORT = 6379
+REDIS_PORT = 13849
 DATABASE = 3
 
 # url

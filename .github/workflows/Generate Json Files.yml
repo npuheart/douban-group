@@ -24,7 +24,7 @@ jobs:
         sudo apt-get update
         sudo apt-get install redis-stack-server
         sudo apt-get install -y redis
-        redis-server --port 6379 &
+        redis-server --port 13849 &
 
     - name: Set up Python
       uses: actions/setup-python@v1
