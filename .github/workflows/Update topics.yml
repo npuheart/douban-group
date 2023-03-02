@@ -1,10 +1,12 @@
 name: Update topics of a douban group
 
 on:
-  push:
   workflow_dispatch:
   schedule:
     - cron: '0 0 * * *'
+  push:
+    branches:
+      - ${GITHUB_REF#refs/heads/}
 
 jobs:
   build:
