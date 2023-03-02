@@ -18,7 +18,8 @@ jobs:
     - name: Start Redis
       run: |
         sudo apt-get install -y redis
-        redis-server --port 29384 &
+        cd data
+        redis-server --port 6379 &
 
     - name: Set up Python
       uses: actions/setup-python@v1

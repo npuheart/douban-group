@@ -28,7 +28,7 @@ class RedisWriterPipeline(object):
         """
         处理item
         """
-        r = redis.StrictRedis(host='localhost', port=REDIS_PORT, db=DATABASE)
+        r = redis.StrictRedis(host=REDIS_SERVER, port=REDIS_PORT, db=DATABASE)
         topic_url = item['url']
         topic_id = topic_url.split('/')[-2]
         topic_title = item['title']

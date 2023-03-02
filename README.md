@@ -10,3 +10,11 @@
 <img width="594" alt="image" src="https://user-images.githubusercontent.com/115222128/215252104-9f1e28d9-c03b-45a9-a779-80145c96f789.png">
 
 
+# docker
+
+
+1. 先为项目创建网桥 `sudo docker network create douban-group`
+2. `cd docker && sudo docker-compose build`
+3. `sudo docker-compose -d up`
+
+如果修改了`docker/conf`文件夹下的文件，则需要重新构建镜像。

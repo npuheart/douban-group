@@ -4,3 +4,29 @@ services:
     build: ../
     volumes:
         - ../:/data
+    networks:
+      - douban-group
+  
+  redis:
+    image: redis
+    restart: always
+    hostname: redis
+    container_name: redis
+    privileged: true
+    ports:
+      - 6379:6379
+    environment:
+      TZ: Asia/Shanghai
+    volumes:
+      - ../data/:/data/
+      - ./conf/redis.conf:/etc/redis/redis.conf
+      - ./logs:/logs
+    command: ["redis-server"]
+    # command: ["redis-server","/etc/redis/redis.conf"]
+    networks:
+      - douban-group
+
+networks:
+  douban-group:
+      # 声明这个网络是外部定义的
+    external: true

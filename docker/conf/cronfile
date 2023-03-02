@@ -1,0 +1,5 @@
+# PATH非常重要，因为cron bash和系统环境变量不一致
+PATH="/usr/local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+# 每天执行一次脚本
+ 0 0 * * * cd /data && bash ./run.sh
+# An empty line is required at the end of this file for a valid cron file.

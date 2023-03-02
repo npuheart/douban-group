@@ -1,9 +1,7 @@
 # 数据库设置
-
-REDIS_PORT = 29384
+REDIS_SERVER = 'redis'
+REDIS_PORT = 6379
 DATABASE = 3
-
-
 
 # url
 # title

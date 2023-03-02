@@ -3,14 +3,13 @@
 
 import json
 import os
-PATH = 'output'
+PATH = 'data'
 JSONFILE = 'data.json'
 
 from tutorial.redis_settings import *
 import redis
 
-
-r = redis.StrictRedis(host='localhost', port=REDIS_PORT, db=DATABASE)
+r = redis.StrictRedis(host=REDIS_SERVER, port=REDIS_PORT, db=DATABASE)
 
 all_data = {}
 for group in r.smembers(redis_douban_group_all_groups):
@@ -45,5 +44,5 @@ for group in r.smembers(redis_douban_group_all_groups):
     all_data[group] = data
     
 
-with open(JSONFILE, 'w' ,encoding='utf-8') as f:
+with open(PATH+'/'+JSONFILE, 'w' ,encoding='utf-8') as f:
     json.dump(all_data, f, ensure_ascii=False, indent=2)
