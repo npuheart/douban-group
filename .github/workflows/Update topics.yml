@@ -6,7 +6,7 @@ on:
     - cron: '0 0 * * *'
   push:
     branches:
-      - ${GITHUB_REF#refs/heads/}
+      - main
 
 jobs:
   build:
