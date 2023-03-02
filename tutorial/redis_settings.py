@@ -1,5 +1,5 @@
 # 数据库设置
-REDIS_SERVER = 'redis'
+REDIS_SERVER = 'localhost'
 REDIS_PORT = 13849
 DATABASE = 3
 
