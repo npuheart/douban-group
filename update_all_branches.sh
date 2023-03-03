@@ -1,6 +1,6 @@
 
 
-export BASE_BRANCH=689047
+export BASE_BRANCH=no_data
 git checkout ${BASE_BRANCH}
 
 for BRANCH_NAME in 'icrush'\
