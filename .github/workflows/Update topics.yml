@@ -41,7 +41,7 @@ jobs:
         email: github-actions@noreply.github.com
         name: github-actions
         message: 'update database'
-        branch: main
+        branch: ${{ env.branch }}
         files: .
         token: ${{ secrets.GITHUB_TOKEN }}
         force: true
