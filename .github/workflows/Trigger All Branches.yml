@@ -12,12 +12,15 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@main
+      with:
+        fetch-depth: 0
     
     - name: Get branch name
       run: echo "branch=${GITHUB_REF#refs/heads/}" >>$GITHUB_ENV
 
     - name: Run the trigger
       run: bash update_all_branches.sh
+      
 
     - name: Update log
       uses: actions-x/commit@v6
