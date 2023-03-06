@@ -1,4 +1,7 @@
 
+date >> history.log
+echo "bash update_all_branches.sh\n" >> history.log
+git add history.log && git commit -m 'update history log'
 
 export BASE_BRANCH=no_data
 git checkout ${BASE_BRANCH}
