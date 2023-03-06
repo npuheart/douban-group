@@ -17,7 +17,7 @@ jobs:
       run: echo "branch=${GITHUB_REF#refs/heads/}" >>$GITHUB_ENV
 
     - name: Run the trigger
-      uses: bash update_all_branches.sh
+      run: bash update_all_branches.sh
 
     - name: Update log
       uses: actions-x/commit@v6
