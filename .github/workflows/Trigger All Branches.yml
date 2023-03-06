@@ -1,0 +1,51 @@
+name: Trigger All Branches
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 0 * * *'
+  push:
+
+env:
+  GIT_USER: shaoyaoqian
+  GIT_EMAIL: mpf_npu@icloud.com
+
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@main
+      with:
+        fetch-depth: 0
+    
+    - name: Get branch name
+      run: echo "branch=${GITHUB_REF#refs/heads/}" >>$GITHUB_ENV
+    
+    - name: Configuration  git environment
+      env:
+        PRIVATE_KEY: ${{secrets.PRIVATE_KEY}}
+      run: |
+        sudo timedatectl set-timezone "Asia/Shanghai"
+        mkdir -p ~/.ssh/
+        echo "$PRIVATE_KEY" > ~/.ssh/id_rsa
+        chmod 600 ~/.ssh/id_rsa
+        ssh-keyscan github.com >> ~/.ssh/known_hosts
+        git config --global user.name $GIT_USER
+        git config --global user.email $GIT_EMAIL
+    
+    - name: Run the trigger
+      run: bash update_all_branches.sh
+      
+
+    - name: Update log
+      uses: actions-x/commit@v6
+      with:
+        email: github-actions@noreply.github.com
+        name: github-actions
+        message: 'update log'
+        branch: ${{ env.branch }}
+        files: .
+        token: ${{ secrets.GITHUB_TOKEN }}
+        force: true
