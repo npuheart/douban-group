@@ -1,11 +1,13 @@
+# 切换为主分支
+export BASE_BRANCH=no_data
+git checkout ${BASE_BRANCH}
 
+# 更新日志
 date >> history.log
 echo "bash update_all_branches.sh\n" >> history.log
 git add history.log && git commit -m 'update history log'
 
-export BASE_BRANCH=no_data
-git checkout ${BASE_BRANCH}
-
+# 提交代码
 for BRANCH_NAME in 'icrush'\
  '711609' '729203' '724924' 'make-it-clear' \
  '652201' 'guilv' '726559' 'EmirKusturica' \
