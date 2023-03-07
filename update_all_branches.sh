@@ -13,7 +13,7 @@ for BRANCH_NAME in 'icrush'\
   '687802' '732302'
 do
     echo '${BRANCH_NAME}'
-    git checkout ${BRANCH_NAME} && git merge ${BASE_BRANCH} --no-edit && git push
+    git checkout ${BRANCH_NAME} && git merge ${BASE_BRANCH} --no-edit && git pull && git push
 done
 
 
